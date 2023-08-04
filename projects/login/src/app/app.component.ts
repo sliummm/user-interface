@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'login';
-  isLogin = true;
+  tabOption=1
 
   ngOnInit(): void {
 
   }
 
-  onSwitch(isLogin:boolean){
-    this.isLogin=isLogin;
+  onTabChange(tab:number){
+    this.tabOption = tab
   }
 }

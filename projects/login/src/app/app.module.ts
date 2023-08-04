@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,9 +15,23 @@ import { SignupComponent } from './signup/signup.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {path:'user-login', component:LoginComponent},
+      {path:'signup', component:SignupComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+@NgModule({})
+export class LoginSharedModule{
+  static forRoot(): ModuleWithProviders<AppModule> {
+    return {
+      ngModule: AppModule,
+      providers: []
+    }
+  }
+}

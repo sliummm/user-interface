@@ -1,10 +1,11 @@
 <div class="container">
-  <ul id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
-      <li  role="presentation">
-          <button id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+  <ul id="myTab" >
+      <li [ngClass]="this.tabOption==1?'tab-selected':'tab'">
+          <button id="profile-tab"  type="button" (click)="onTabChange(1)" routerLink="/login">Login</button>
       </li>
-      <li  role="presentation">
-          <button ta-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
+      <li [ngClass]="this.tabOption==2?'tab-selected':'tab'">
+          <button  type="button" (click)="onTabChange(2)" routerLink="/signup">Signup</button>
       </li>
   </ul>
+  <router-outlet></router-outlet>
 </div>

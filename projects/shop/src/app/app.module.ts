@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,3 +16,13 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+@NgModule({})
+export class ShopSharedModule{
+  static forRoot(): ModuleWithProviders<ShopSharedModule> {
+    return {
+      ngModule: AppModule,
+      providers: []
+    }
+  }
+}
