@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginSharedModule } from 'projects/login/src/app/app.module';
-import { ShopSharedModule } from 'projects/shop/src/app/app.module';
+
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const routes:Routes=[
-  {path:'login', loadChildren:()=>import('../../projects/login/src/app/app.module').then(m=>m.LoginSharedModule)},
-  {path:'shop', loadChildren:()=>import('../../projects/shop/src/app/app.module').then(m=>m.ShopSharedModule)}
+  {path:'user-function', loadChildren:()=> import('./modules/user-function/user-function.module').then(m => m.UserFunctionModule)}
 ]
 
 @NgModule({
@@ -19,9 +17,7 @@ const routes:Routes=[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forChild(routes),
-    LoginSharedModule.forRoot(),
-    ShopSharedModule.forRoot()
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]

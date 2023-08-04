@@ -1,0 +1,13 @@
+<div class="container">
+    <ul id="myTab" >
+        <li [ngClass]="this.tabOption==1?'tab-selected':'tab'">
+            <button id="profile-tab"  type="button" (click)="onTabChange(1)" routerLink="/login">Login</button>
+        </li>
+        <li [ngClass]="this.tabOption==2?'tab-selected':'tab'">
+            <button  type="button" (click)="onTabChange(2)" routerLink="/signup">Signup</button>
+        </li>
+    </ul>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+  </div>
