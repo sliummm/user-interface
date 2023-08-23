@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserstatusService } from '../services/userstatus.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,10 +12,23 @@ export class NavBarComponent implements OnInit{
   isCartOpen = false;
   isLoginedIn = false
 
-  constructor(private status:UserstatusService){}
+  constructor(
+    private status:UserstatusService,
+    private router:Router
+    ){ }
 
   ngOnInit(){
-    this.isLoginedIn = this.status.uid
+    this.status.authStatus.subscribe(status => {
+      this.isLoginedIn = status;
+    });
+  }
+
+  onLogout(){
+    this.status.user = null
+    this.isLoginedIn = false
+    console.log(this.status.user)
+    this.status.logout();
+    this.router.navigate(['/home'])
   }
 
   onOpenCart(){

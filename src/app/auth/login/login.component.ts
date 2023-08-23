@@ -23,8 +23,8 @@ export class LoginComponent {
 
     ngOnInit(){
       this.loginForm = this.formBuilder.group({
-        email:['', [Validators.required, Validators.email],{updateOn:'blur'}],
-        password:['',[Validators.required],{updateOn:'blur'}]
+        email:['', [Validators.required, Validators.email],,{updateOn:'blur'}],
+        password:['',[Validators.required],,{updateOn:'blur'}]
       })
     }
 
@@ -40,8 +40,10 @@ export class LoginComponent {
       this.userAuth.userAuth({email:this.loginForm.value.email, password:this.loginForm.value.password})
       .subscribe(
       data=>{
-          this.status.uid = data
-          console.log(this.status.uid)
+          this.status.login()
+          console.log(data)
+          this.status.user = data
+          console.log(this.status.user._id)
           this.router.navigate(['/home'])
       },
       error=>{

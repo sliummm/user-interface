@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserAuthService {
+export class ProductService {
 
-  private url="http://localhost:3030/users"
+  private url="http://localhost:3000/product"
 
   httpOptions: {headers: HttpHeaders} = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
@@ -14,11 +15,12 @@ export class UserAuthService {
 
   constructor(private http:HttpClient) { }
 
-  userAuth(cred:any){
-    return this.http.post(`${this.url}/auth`,cred,{responseType:"json"})
+  getAllProducts(): Observable<any>{
+    return this.http.get(this.url,{responseType:"json"})
   }
 
-  userSignup(user:any){
-    return this.http.post(this.url,user,{responseType:"json"})
+  getProductById(id:any):Observable<any>{
+    return this.http.get(`${this.url}/${id}`,{responseType:"json"})
   }
+
 }

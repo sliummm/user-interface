@@ -19,7 +19,10 @@ import { OrderDetailComponent } from './details/order-detail/order-detail.compon
 import { CartComponent } from './cart/cart.component';
 import { SearchBarComponent } from './product/search-bar/search-bar.component';
 import { ProductComponent } from './product/product.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './product/card/card.component';
+import { OrderComponent } from './order/order.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,13 +39,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductTableComponent,
     SearchBarComponent,
     ProductDetailComponent,
+    OrderComponent,
     OrderDetailComponent,
     CartComponent,
-    ProductComponent
+    ProductComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path:'user-function',
@@ -55,7 +62,10 @@ import { ReactiveFormsModule } from '@angular/forms';
         ]
       },  
       {path:'home', component:HomeComponent},
-      {path:'product',component:ProductComponent}
+      {path:'product',component:ProductComponent},
+      {path:'productdetail/:id',component:ProductDetailComponent},
+      {path:'order',component:OrderComponent},
+      {path:'ordersDetail/:id',component:OrderDetailComponent}
 
     ]),
   ],

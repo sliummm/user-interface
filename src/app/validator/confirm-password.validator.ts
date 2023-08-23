@@ -4,12 +4,9 @@ import {
     ValidatorFn,
   } from '@angular/forms';
   
-  export const confirmPasswordValidator: ValidatorFn = (
-    control: AbstractControl
-  ): ValidationErrors | null => {
-
+  export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     let password = control.get('password');
-    let confirm = control.get('conform');
+    let confirm = control.get('confirm');
     if(password && confirm && password?.value != confirm?.value){
 
         return {

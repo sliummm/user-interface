@@ -21,8 +21,12 @@
         <li>
           <a routerLink="product" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Products</a>
         </li>
+        <li *ngIf="this.isLoginedIn">
+          <a routerLink="order" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Orders</a>
+        </li>
         <li>
-          <a routerLink='user-function' class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">{{this.isLoginedIn?"LogOut":"LogIn"}}</a>
+          <a routerLink='user-function' *ngIf="!this.isLoginedIn" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">LogIn</a>
+          <a *ngIf="this.isLoginedIn" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer" (click)="onLogout()">LogOut</a>
         </li>
       </ul>
     </div>

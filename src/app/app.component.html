@@ -1,6 +1,7 @@
 <app-nav-bar (newCartEvent)="openCart($event)"></app-nav-bar>
-<div class="flex flex-row justify-evenly max-w-full max-h-ful">
-    <router-outlet class="w-[40px] relative"></router-outlet>
+<div class="flex flex-row w-full h-full max-w-full max-h-full bg-[url('D:\Project\user-interface\src\assets\images\495.jpg')]">
+    <router-outlet></router-outlet>
     <app-cart *ngIf="isCartOpen" class="w-[30%] h-[80%] absolute right-0" (newCartEvent)="openCart($event)"></app-cart>
 </div>
+
 
